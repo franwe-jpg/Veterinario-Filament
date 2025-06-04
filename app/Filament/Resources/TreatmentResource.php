@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use PhpParser\Node\Arg;
 
 class TreatmentResource extends Resource
 {
@@ -48,6 +49,10 @@ class TreatmentResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('description'),
                 Tables\Columns\TextColumn::make('cost')
+                    ->money('arg'),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable(),   
 
             ])
             ->filters([

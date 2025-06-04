@@ -22,6 +22,10 @@ class TreatmentsRelationManager extends RelationManager
                     ->required()
                     ->maxLength(255)
                     ->columnSpanFull(),
+                Forms\Components\TextInput::make('cost')
+                    ->nullable()
+                    ->maxLength(10)
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -31,7 +35,11 @@ class TreatmentsRelationManager extends RelationManager
             ->recordTitleAttribute('description')
             ->columns([
                 Tables\Columns\TextColumn::make('description'),
-                Tables\Columns\TextColumn::make('cost'),
+                Tables\Columns\TextColumn::make('cost')
+                    ->money('arg'),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable(),
             ])
             ->filters([
                 //
